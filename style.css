@@ -109,7 +109,7 @@ button:hover {
 
 
 .hidden {
-    visibility: hidden;
+    display: none;
 }
 
 .option-el a {
@@ -140,6 +140,10 @@ button:hover {
 
 /* form component */
 
+form {
+    width: 75vw;
+}
+
 form input {
     border: 1px solid rgb(45, 158, 0);
     padding: 0.3rem;
@@ -147,6 +151,7 @@ form input {
     font-weight: normal;
     color: rgb(121, 121, 121);
     border-radius: 0.1rem;
+    width: 100%
 }
 
 .form-div {
@@ -161,7 +166,8 @@ form input {
     color: grey;
     text-transform: uppercase;
 }
-.login {
+
+.login, .add {
     width: 100%;
     text-align: center;
     padding: 0.5rem;
@@ -172,4 +178,34 @@ form input {
 #input_error {
     text-align: left;
     color: red;
+}
+
+
+/* error */
+
+.err {
+    color: white;
+    width: 80vw;
+    height: 40px;
+    border-radius: 4px;
+    margin: 1rem auto;
+    padding-left: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+.err-success {
+    color: white;
+    background-color: rgb(71, 165, 71);
+}
+
+.err-danger {
+    color: white;
+    background-color: rgb(236, 53, 53);
+}
+
+#signup_button a {
+    text-decoration: none;
+    color: white;
 }

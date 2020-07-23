@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,75 @@
 <body>
     <nav>
         <div class="brand">Spidey </div>
-        <div class="nav-links">
-            <span class="nav-button" id="login_button">login</span>
-            <span class="nav-button" id="logout_button">logout</span>
-            <span class="nav-button hidden" id="logoutAll_button">logout all </span>
-        </div>
+        <div class="nav-links"> </div>
     </nav>
+    <br>
+    <div class="err-container">
+    </div>
 
-    
+    <style>
+        h1 {
+            text-align: center;
+            text-transform: capitalize;
+            color: rgba(25, 137, 202, 0.836);
+        }
 
-    <div class="container"> <!-- every mess goes here -->  </div>
+        .add-container {
+            border: 2px solid rgb(240, 229, 229);
+            width: 80vw;
+            margin: 2rem auto;
+            border-radius: 4px;
+            padding-bottom: 2rem;
+        }
 
+        .add-container h1 {
+            margin-top: 1rem;
+            text-decoration: underline;
+            color: rgba(18, 82, 119, 0.719);
+        }
+
+        .add-container form {
+            padding: 0;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .add-container .form-div {
+            width: 100%;
+            padding: 0;
+            margin: 1.2rem 0;
+        }
+
+        .add-container input {
+            width: 100%;
+            margin: 0;
+        }
+    </style>
+    <h1>my password manager</h1>
+    <div class="add-container">
+        <h1>add new pasword</h1>
+        <form id="add_form">
+            <div class="form-div">
+                <label for="name">name</label>
+                <input type="text" name="" id="name">
+            </div>
+
+            <div class="form-div">
+                <label for="manger-password">password</label>
+                <input type="text" name="" id="manager-password">
+            </div>
+
+            <div class="form-div">
+                <button class="add">add</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <!-- every mess goes here -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
 </body>
 

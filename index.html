@@ -5,68 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
     <title>Pasword Manager</title>
 </head>
 
 <body>
-    <nav>
+    <nav style="margin-bottom: 1.2rem;">
         <div class="brand">Spidey </div>
-        <div class="nav-links"> </div>
+        <div class="nav-links">
+            <section id="nauth">
+                <span class="nav-button" id="login-button">login</span>
+                <span class="nav-button" id="signup-button">signup</span>
+            </section>
+            <section id="auth" class="hidden">
+                <span class="nav-button" id="add-form">add new</span>
+                <span class="nav-button" id="logout-button">logout</span>
+            </section>
+        </div>
     </nav>
-    <br>
-    <div class="err-container">
+    <div class="msg-container"></div>
+
+    <div class="blackback"></div>
+
+    <div class="modal" id="login-form-container">
+        <form id="login_form">
+            <div class="form-div">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="signup-email" required>
+                <span id="input_error"> </span>
+            </div>
+            <div class="form-div">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="signup-password" required>
+            </div>
+            <div class="form-div">
+                <button class="login">login</button>
+            </div>
+        </form>
     </div>
 
-    <style>
-        h1 {
-            text-align: center;
-            text-transform: capitalize;
-            color: rgba(25, 137, 202, 0.836);
-        }
+    <div class="modal" id="signup-form-container">
+        <form id="signup_form">
+            <div class="form-div">
+                <label for="username">username</label>
+                <input type="text" name="username" id="username">
+            </div>
+            <div class="form-div">
+                <label for="firstname">first name</label>
+                <input type="text" name="firstname" id="firstname">
+            </div>
+            <div class="form-div">
+                <label for="lastname">lastname</label>
+                <input type="text" name="lastname" , id="lastname">
+            </div>
+            <div class="form-div">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="form-div">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="form-div">
+                <button class="login">signup</button>
+            </div>
+        </form>
+    </div>
 
-        .add-container {
-            border: 2px solid rgb(240, 229, 229);
-            width: 80vw;
-            margin: 2rem auto;
-            border-radius: 4px;
-            padding-bottom: 2rem;
-        }
-
-        .add-container h1 {
-            margin-top: 1rem;
-            text-decoration: underline;
-            color: rgba(18, 82, 119, 0.719);
-        }
-
-        .add-container form {
-            padding: 0;
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .add-container .form-div {
-            width: 100%;
-            padding: 0;
-            margin: 1.2rem 0;
-        }
-
-        .add-container input {
-            width: 100%;
-            margin: 0;
-        }
-    </style>
-    <h1>my password manager</h1>
-    <div class="add-container">
+    <div class="modal add-container">
         <h1>add new pasword</h1>
         <form id="add_form">
             <div class="form-div">
                 <label for="name">name</label>
-                <input type="text" name="" id="name">
+                <input type="text" name="name" id="name">
             </div>
-
             <div class="form-div">
                 <label for="manger-password">password</label>
-                <input type="text" name="" id="manager-password">
+                <input type="text" name="password" id="manager-password">
             </div>
 
             <div class="form-div">
@@ -75,12 +90,15 @@
         </form>
     </div>
 
+
+
     <div class="container">
         <!-- every mess goes here -->
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./script.js"></script>
+
+    <!-- <script src="./script.js"></script> -->
+    <script src="./script1.js"></script>
 </body>
 
 </html>

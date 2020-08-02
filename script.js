@@ -67,20 +67,7 @@ class UI {
     static showLoginForm() {
         const formContainer = document.createElement('div')
         formContainer.innerHTML = `
-         <form id="login_form">
-        <div class="form-div">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email">
-            <span id="input_error"> </span> 
-        </div>
-        <div class="form-div">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-        </div>
-        <div class="form-div">
-            <button class="login">login</button>
-        </div>
-    </form>
+         
         `
         const mainContainer = document.querySelector('.container')
         mainContainer.innerHTML = ''
@@ -90,31 +77,7 @@ class UI {
     static showSignupForm() {
         const formContainer = document.createElement('div')
         formContainer.innerHTML = `
-        <form id="signup_form">
-        <div class="form-div">
-            <label for="username">username</label>
-            <input type="text" name="" id="username">
-        </div>
-        <div class="form-div">
-            <label for="firstname">first name</label>
-            <input type="text" name="" id="firstname">
-        </div>
-        <div class="form-div">
-            <label for="lastname">lastname</label>
-            <input type="text" name="", id="lastname">
-        </div>
-        <div class="form-div">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email">
-        </div>
-        <div class="form-div">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-        </div>
-        <div class="form-div">
-            <button class="login">login</button>
-        </div>
-    </form>
+    
         `
 
         const mainContainer = document.querySelector('.container')
@@ -185,7 +148,7 @@ class Password {
             return { error: 'something went wrong' }
         }
         else {
-            main()
+            return false
         }
     }
 
@@ -272,29 +235,33 @@ async function getAllPasswords(token) {
     }
 }
 
+function showAddForm() {
+    const addContainer = document.querySelector('.add-container')
+    addContainer.classList.remove('hidden')
+    const addForm = document.querySelector('#add_form')
+    addForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const name = e.target[0].value
+        const password = e.target[1].value
+
+        const status = await Password.addPassword(name, password)
+        if (status) {
+            UI.showErrorMsg(status.error, 'danger')
+        }
+        UI.showErrorMsg('added succesfully', 'success')
+        e.target[0].value = ''
+        e.target[1].value = ''
+        console.log(status)
+        UI.showPasswordList()
+    })
+}
+
+
 function main() {
     if (User.isAuthenticated()) {
+        showAddForm()
 
-        const addContainer = document.querySelector('.add-container')
-        addContainer.classList.remove('hidden')
-
-        const addForm = document.querySelector('#add_form')
-        addForm.addEventListener('submit', async (e) => {
-            e.preventDefault()
-
-            const name = e.target[0].value
-            const password = e.target[1].value
-
-            const status = await Password.addPassword(name, password)
-            if (status) {
-                UI.showErrorMsg(status.error, 'danger')
-            }
-            UI.showErrorMsg('added succesfully', 'success')
-            e.target[0].value = ''
-            e.target[1].value = ''
-            console.log(status)
-
-        })
+        showAddForm()
 
         UI.showPasswordList()
 
@@ -318,9 +285,10 @@ function main() {
         logOutBtn.id = "logout_button"
         logOutBtn.textContent = 'logout'
 
-
-        document.querySelector('.nav-links').appendChild(userNameButton)
-        document.querySelector('.nav-links').appendChild(logOutBtn)
+        const nav_links = document.querySelector('.nav-links')
+        nav_links.innerHTML = ''
+        nav_links.appendChild(userNameButton)
+        nav_links.appendChild(logOutBtn)
 
         logOutBtn.addEventListener('click', async (e) => {
             const status = await User.logout()
@@ -377,8 +345,9 @@ function main() {
                 if (status.error) {
                     UI.showErrorMsg(status.error, 'danger')
                     return console.log(status.error)
+                } else {
+                    return main()
                 }
-                main()
             })
         })
 
@@ -412,9 +381,9 @@ function main() {
             console.log('this one ')
             main()
         })
-
-
     }
 }
 
 main()
+
+

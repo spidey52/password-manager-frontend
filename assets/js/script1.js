@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://passwordmanagerapi.iamsatyam.com";
 const blackback = document.querySelector(".blackback");
 
 const addButton = document.getElementById("add-form");
@@ -224,6 +224,7 @@ loginButton.addEventListener("click", () => {
 });
 
 signupButton.addEventListener("click", () => {
+
   signUpFormContainer.classList.add("visible");
   blackback.classList.toggle("visible");
   lastVisible = signUpFormContainer;
@@ -231,6 +232,7 @@ signupButton.addEventListener("click", () => {
 
 blackback.addEventListener("click", (e) => {
   e.target.classList.toggle("visible");
+  document.body.style.overflow = 'auto'
   lastVisible.classList.remove("visible");
 });
 
